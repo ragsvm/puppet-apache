@@ -4,7 +4,15 @@
 #
 # @example
 #   include apache
-class apache {
+class apache (
+  String $install_ensure,
+  String $install_package,
+  String $config_ensure,
+  String $config_path,
+){
+  contain apache::install
+  contain apache::config
 
-  include ::apache::install
+  Class['::apache::install']
+  -> Class['::apache::config'] 
 }
