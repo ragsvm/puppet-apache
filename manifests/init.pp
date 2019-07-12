@@ -5,13 +5,16 @@
 # @example
 #   include apache
 class apache (
-  String $install_ensure,
-  String $install_package,
-  String $config_ensure,
-  String $config_path,
-  String $service_name,
+  String     $install_ensure,
+  String     $install_package,
+  String     $config_ensure,
+  String     $config_path,
+  String     $service_name,
   Enum["running", "stopped"] $service_ensure,
-  Boolean $service_enable
+  Boolean    $service_enable,
+  String[1]  $vhosts_dir,
+  String[1]  $vhosts_owner,
+  String[1]  $vhosts_group,
 ){
   contain apache::install
   contain apache::config
