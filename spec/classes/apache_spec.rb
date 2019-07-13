@@ -8,6 +8,14 @@ describe 'apache' do
       it { is_expected.to contain_class ('apache::config')}
       it { is_expected.to contain_class ('apache::service')}   
       it { is_expected.to compile }
+      case os_facts[:osfamily]
+      when 'Debian'
+        it { it is_expected.to contain_package('apache2').with(ensure: 'present')}
+        it { it is_expected.to contain_service('apache2').with(ensure: 'running', enable: 'true', hasrestart: 'true')}
+      when 'RedHat'
+        it { it is_expected.to contain_package('httpd').with(ensure: 'present')}
+        it { it is_expected.to contain_service('httpd').with(ensure: 'running', enable: 'true', hasrestart: 'true')}
+      end
     end
   end
 end
