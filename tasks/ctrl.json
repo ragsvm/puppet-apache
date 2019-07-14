@@ -5,7 +5,7 @@
   "parameters": {
     "command": {
       "description": "Task to let users run apachectl commands",
-      "Type": "Enum[status,stop,start,restart,graceful,graceful-stop]" 
+      "type": "Enum[status,stop,start,restart,graceful,graceful-stop]" 
     }
   }
 }
